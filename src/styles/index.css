@@ -1,0 +1,29 @@
+﻿@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Global smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle selection color */
+::selection {
+  background-color: #0589d9;
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #0589d9;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00275c;
+}
