@@ -12,11 +12,12 @@ const SECONDARY = "#0589d9";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
+    carName: "",
+    stockId: "",
     name: "",
     email: "",
     phone: "",
     country: "",
-    subject: "",
     message: "",
   });
   const [securityAnswer, setSecurityAnswer] = useState("");
@@ -211,7 +212,7 @@ export function ContactPage() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({ name: "", email: "", phone: "", country: "", subject: "", message: "" });
+                      setFormData({ carName: "", stockId: "", name: "", email: "", phone: "", country: "", message: "" });
                       setSecurityAnswer("");
                     }}
                     className="bg-[#00275c] hover:bg-[#0589d9] text-white px-7 py-3 rounded-xl text-sm transition-all shadow-sm"
@@ -222,6 +223,31 @@ export function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="px-6 md:px-8 py-7 space-y-5">
+                  {/* Car Reference */}
+                  <div className="bg-[#0589d9]/5 border border-[#0589d9]/20 rounded-xl p-4">
+                    <p className="text-[#00275c] text-[10px] tracking-[0.15em] uppercase mb-3" style={{ fontWeight: 700 }}>Car You're Interested In</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className={labelCls} style={{ fontWeight: 600 }}>Car Name / Model <span className="text-red-500">*</span></label>
+                        <input
+                          type="text" required className={inputCls}
+                          placeholder="e.g. 2021 Toyota Land Cruiser"
+                          value={formData.carName}
+                          onChange={(e) => setFormData({ ...formData, carName: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelCls} style={{ fontWeight: 600 }}>Stock ID <span className="text-gray-400" style={{ fontWeight: 400 }}>(optional)</span></label>
+                        <input
+                          type="text" className={inputCls}
+                          placeholder="e.g. DJ-20241"
+                          value={formData.stockId}
+                          onChange={(e) => setFormData({ ...formData, stockId: e.target.value })}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className={labelCls} style={{ fontWeight: 600 }}>Full Name <span className="text-red-500">*</span></label>
@@ -259,16 +285,6 @@ export function ContactPage() {
                         ))}
                       </select>
                     </div>
-                  </div>
-
-                  <div>
-                    <label className={labelCls} style={{ fontWeight: 600 }}>Subject <span className="text-red-500">*</span></label>
-                    <input
-                      type="text" required className={inputCls}
-                      placeholder="e.g. Inquiry about Toyota Land Cruiser 2020"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    />
                   </div>
 
                   <div>
