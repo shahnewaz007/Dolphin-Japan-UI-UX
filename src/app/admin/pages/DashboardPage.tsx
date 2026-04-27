@@ -102,7 +102,7 @@ export function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 20 }}>
+      <div className="admin-stat-grid">
         {STATS.map((s) => {
           const Icon = s.icon;
           const TrendIcon = s.trend === "up" ? ArrowUpRight : ArrowDownRight;
@@ -140,7 +140,7 @@ export function DashboardPage() {
       </div>
 
       {/* Two-col: Brands + Sales chart */}
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.4fr)", gap: 16, marginBottom: 20 }}>
+      <div className="admin-dash-2col">
         {/* Popular Brands */}
         <div style={{ ...card, padding: 20, display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 6 }}>
@@ -371,7 +371,7 @@ export function DashboardPage() {
       </div>
 
       {/* Two-col: Recent Inquiries + Quick Actions */}
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 2fr) minmax(0, 1fr)", gap: 16 }}>
+      <div className="admin-dash-2col-wide">
         {/* Recent Inquiries */}
         <div style={{ ...card, overflow: "hidden" }}>
           <div style={{

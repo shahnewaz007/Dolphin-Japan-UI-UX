@@ -45,15 +45,38 @@ export function AdminModal({
           from { opacity: 0; transform: translateY(-8px) scale(0.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
+        .admin-modal-scroll {
+          padding-top: 60px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-bottom: 16px;
+        }
+        @media (max-width: 639px) {
+          .admin-modal-scroll {
+            padding-top: 12px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: 8px;
+          }
+        }
+        .admin-modal-box {
+          max-height: 85svh;
+        }
+        @media (max-width: 639px) {
+          .admin-modal-box {
+            max-height: calc(100svh - 20px);
+            border-radius: 16px !important;
+          }
+        }
       `}</style>
       <div
+        className="admin-modal-scroll"
         style={{
           position: "fixed", inset: 0, zIndex: 100,
           display: "flex", alignItems: "flex-start", justifyContent: "center",
           background: "rgba(15,23,42,0.55)",
           backdropFilter: "blur(4px)",
           WebkitBackdropFilter: "blur(4px)",
-          paddingTop: 60, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
           overflowY: "auto",
           animation: "adminModalFadeIn 0.18s ease-out",
         }}
@@ -63,6 +86,7 @@ export function AdminModal({
           role="dialog"
           aria-modal="true"
           aria-label={title}
+          className="admin-modal-box"
           style={{
             background: colors.surface,
             borderRadius: radius.xl,
@@ -71,7 +95,6 @@ export function AdminModal({
             maxWidth: sizeMap[size],
             display: "flex",
             flexDirection: "column",
-            maxHeight: "85vh",
             overflow: "hidden",
             border: `1px solid ${colors.border}`,
             animation: "adminModalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -79,6 +102,7 @@ export function AdminModal({
         >
           {/* Header */}
           <div
+            className="admin-modal-header"
             style={{
               display: "flex", alignItems: "flex-start", justifyContent: "space-between",
               padding: "18px 24px 16px",
@@ -118,7 +142,7 @@ export function AdminModal({
           </div>
 
           {/* Body */}
-          <div style={{ flex: 1, overflowY: "auto", padding: "20px 24px", background: colors.surface }}>
+          <div className="admin-modal-body" style={{ flex: 1, overflowY: "auto", padding: "20px 24px", background: colors.surface }}>
             {children}
           </div>
 
